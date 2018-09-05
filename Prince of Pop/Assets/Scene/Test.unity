@@ -220,6 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 1935388787809668, guid: 2ba657aeddaff5a43b60c2fe8400ce5d, type: 2}
   projectileOrigin: {fileID: 197234616}
+  bulletSpeed: 2000
 --- !u!1 &1048496112
 GameObject:
   m_ObjectHideFlags: 0
