@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour {
     void Update()
     {
         grounded = Physics2D.OverlapBox(groundCheck.position, groundSize, 0, checkLayer);
-        Debug.Log(grounded);
+        //Debug.Log(grounded);
 
         if (Input.GetButton("Right"))
             charMovement.Move(charModel.MovementSpeed);
@@ -57,6 +57,11 @@ public class PlayerController : MonoBehaviour {
         {
             charIntetaction.IntantiateProjectile(charModel.FacingRigth);
         }
+        if (Input.GetKeyDown("tab"))
+        {
+            charIntetaction.IntantiateProjectile(charModel.FacingRigth);
+        }
+        
 
         if (Input.GetAxis("Horizontal") > 0 && !charModel.FacingRigth)
             FlipCharacter();
