@@ -14,6 +14,7 @@ public class CharacterInteraction : MonoBehaviour {
         GameObject bullet = Instantiate(projectile, projectileOrigin.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
         Vector3 imageScale = this.transform.localScale;
         bullet.transform.localScale = imageScale;
+        bullet.name="bullet";
 
         if (!rigth) {
             bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(-bulletSpeed, 0));
