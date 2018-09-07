@@ -45,15 +45,15 @@ public class PlayerController : MonoBehaviour {
         grounded = Physics2D.OverlapBox(groundCheck.position, groundSize, 0, checkLayer);
         Debug.Log(grounded);
 
-        if (Input.GetButton("Right"))
+        if (Input.GetKey("right"))
             charMovement.Move(charModel.MovementSpeed);
-        if (Input.GetButton("Left"))
+        if (Input.GetKey("left"))
             charMovement.Move(-charModel.MovementSpeed);
 
-        if (grounded && Input.GetButtonDown("Jump"))
+        if (grounded && Input.GetKeyDown("space"))
             rigBody2d.AddForce(new Vector2(0, jumpForce));
 
-        if (Input.GetButtonDown("Fire"))
+        if (Input.GetKeyDown("z"))
         {
             charIntetaction.IntantiateProjectile(charModel.FacingRigth);
         }
