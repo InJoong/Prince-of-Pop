@@ -8,6 +8,7 @@ public class EnemyModel : MonoBehaviour {
     [SerializeField] private float attack = 10.0f;
     [SerializeField] private float defense = 10.0f;
     [SerializeField] private float speed = 10.0f;
+    [SerializeField] private bool facingRigth = true;
 
     public float Health
     {
@@ -58,6 +59,19 @@ public class EnemyModel : MonoBehaviour {
         set
         {
             speed = value;
+        }
+    }
+
+    public bool FacingRigth
+    {
+        get
+        {
+            return facingRigth;
+        }
+
+        set
+        {
+            facingRigth = value;
         }
     }
 }

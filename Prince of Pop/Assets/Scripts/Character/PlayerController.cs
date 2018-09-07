@@ -61,8 +61,9 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetAxis("Horizontal") > 0 && !charModel.FacingRigth)
             FlipCharacter();
         else if (Input.GetAxis("Horizontal") < 0 && charModel.FacingRigth)
-            FlipCharacter();
+            FlipCharacter();    
     }
+
     public void FlipCharacter()
     {
         charModel.FacingRigth = !charModel.FacingRigth;
