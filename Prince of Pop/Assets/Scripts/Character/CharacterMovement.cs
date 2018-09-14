@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour {
 
-    private CharacterModel charModel;
+    private Rigidbody2D rigBody2d;
+    private CharacterManager charManager;
 
     private void Start()
     {
-        charModel = GetComponent<CharacterModel>();
+        rigBody2d = GetComponent<Rigidbody2D>();
+        charManager = GetComponent<CharacterManager>();
     }
 
     public void Move(float x)
     {
-        gameObject.transform.Translate(x, 0, 0);
+        gameObject.transform.Translate(charManager.CharModel.MovementSpeed * x, 0, 0);
     }
 
     public void Jump()
     {
-
+        this.rigBody2d.AddForce(new Vector2(0, charManager.CharModel.JumpForce));
     }
 }

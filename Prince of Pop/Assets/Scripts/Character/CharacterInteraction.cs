@@ -4,25 +4,24 @@ using UnityEngine;
 
 public class CharacterInteraction : MonoBehaviour {
 
-    [SerializeField] private GameObject projectile;
-    [SerializeField] private GameObject projectileOrigin;
+    private CharacterManager charManager;
 
-    [SerializeField] private float bulletSpeed = 2000.0f;
-
-	public void IntantiateProjectile(bool rigth)
+    void Awake()
     {
-        GameObject bullet = Instantiate(projectile, projectileOrigin.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-        Vector3 imageScale = this.transform.localScale;
-        bullet.transform.localScale = imageScale;
-        bullet.name="bullet";
+        charManager = GetComponent<CharacterManager>();
+    }
 
-        if (!rigth) {
-            bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(-bulletSpeed, 0));
-        }
-        else
-        {
-            bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(bulletSpeed, 0));
-        }
+    public void Interaction()
+    {
+
+    }
+
+    public void Damaged(bool facingRigth)
+    {
+        if(!facingRigth)
+            this.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-500, 100));
+        if (facingRigth)
+            this.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(500, 100));
     }
 
 }
