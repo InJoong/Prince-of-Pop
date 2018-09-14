@@ -5,10 +5,12 @@ using UnityEngine;
 public class CharacterModel : MonoBehaviour
 {
 
-    [SerializeField] private float health = 100.0f;
+    [SerializeField] private float health = 10.0f;
     [SerializeField] private float movementSpeed = 10.0f;
     [SerializeField] private float jumpForce = 10.0f;
     [SerializeField] private bool facingRigth = true;
+    [SerializeField] private bool invisible = false;
+    [SerializeField] private bool damaged = false;
 
     public float MovementSpeed
     {
@@ -59,6 +61,32 @@ public class CharacterModel : MonoBehaviour
         set
         {
             health = value;
+        }
+    }
+
+    public bool Invisible
+    {
+        get
+        {
+            return invisible;
+        }
+
+        set
+        {
+            invisible = value;
+        }
+    }
+
+    public bool Damaged
+    {
+        get
+        {
+            return damaged;
+        }
+
+        set
+        {
+            damaged = value;
         }
     }
 }
