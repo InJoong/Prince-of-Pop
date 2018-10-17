@@ -13,7 +13,7 @@ public class Projectile : MonoBehaviour {
         counter += Time.deltaTime;
         if (lifeTime <= counter)
         {
-            DestroyObject(this.gameObject);
+            Destroy(this.gameObject);
         }
 	}
 

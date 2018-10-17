@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class HpItem : MonoBehaviour {
 
-    [SerializeField] private float hpUp = 3.0f;
+    [SerializeField] private float hpUp = 1.0f;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == 8) {
-            CharacterModel charModel = collision.gameObject.GetComponent<CharacterModel>();
+            CharacterState charState = collision.gameObject.GetComponent<CharacterState>();
 
-            if (charModel.Health != 10) {
-                charModel.Health += hpUp;
+            if (charState.CurrentHealth != charState.MaxHealth) {
+                charState.CurrentHealth += hpUp;
 
-                if (charModel.Health > 10)
+                if (charState.CurrentHealth > charState.MaxHealth)
                 {
-                    charModel.Health -= (charModel.Health - 10);
+                    charState.CurrentHealth -= (charState.CurrentHealth - charState.MaxHealth);
                 }
 
                 Destroy(this.gameObject);

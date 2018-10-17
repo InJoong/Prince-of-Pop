@@ -73,21 +73,6 @@ public class EnemyAI : MonoBehaviour {
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == 8)
-        {
-            CharacterModel charModel = collision.gameObject.GetComponent<CharacterModel>();
-            if (!charModel.Damaged) {
-                Debug.Log("Enemy");
-
-                collision.gameObject.GetComponent<CharacterInteraction>().Damaged(eneModel.FacingRigth);
-                charModel.Health -= eneModel.Attack;
-                charModel.Damaged = true;
-            }
-        }
-    }
-
     public void followPlayer()
     {
         if (player.transform.position.x - transform.position.x > 0.1)
