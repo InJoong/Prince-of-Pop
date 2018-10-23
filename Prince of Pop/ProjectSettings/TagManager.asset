@@ -15,10 +15,10 @@ TagManager:
   - 
   - Player
   - Enemy
-  - Bullet
-  - Wall
-  - Enemy Bullet
-  - 
+  - Alliy_Bullet
+  - Wall or Floor
+  - Enemy_Bullet
+  - Weapon_Container
   - 
   - 
   - 

@@ -9,7 +9,7 @@ public class CharacterAnimation : MonoBehaviour {
     private PlayerManager playerManager;
 
     // Use this for initialization
-    void Awake () {
+    void Start () {
         playerManager = GetComponent<PlayerManager>();
         characterAnimator = GetComponent<Animator>();
     }

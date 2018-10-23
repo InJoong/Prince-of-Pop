@@ -33,13 +33,18 @@ public class InputManager : MonoBehaviour {
                                                     * Input.GetAxisRaw("Horizontal"), 0));
 
         //Jump
-        if (Input.GetKeyDown("space") && !ScriptManager.singleton.PlayerManager.CharModel.Damaged)
+        if (Input.GetKeyDown("x") && !ScriptManager.singleton.PlayerManager.CharModel.Damaged)
             ScriptManager.singleton.PlayerManager.CharMovement.Jump();
 
         //Shoot
-        if (Input.GetKeyDown("z") && !ScriptManager.singleton.PlayerManager.CharModel.Damaged)
+        if (Input.GetKeyDown("c") && !ScriptManager.singleton.PlayerManager.CharModel.Damaged)
         {
             ScriptManager.singleton.PlayerManager.CharAction.IntantiateProjectile(ScriptManager.singleton.PlayerManager.CharModel.FacingRigth);
+        }
+
+        if (Input.GetKeyDown("z") && !ScriptManager.singleton.PlayerManager.CharModel.Damaged)
+        {
+            ScriptManager.singleton.PlayerManager.CharInteraction.GrabWeapon();
         }
         
         //Flip texture

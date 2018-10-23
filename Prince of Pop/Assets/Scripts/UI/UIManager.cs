@@ -4,11 +4,22 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour {
 
-    private UIAnimation uIAnimation;
+    //Player
+    private PlayerUIAnimation playerUIAnimation;
+    private PlayerUIController playerUIController;
+
+    //Option
+    private OptionUIController optionUIController;
+
+    //Menu
+    private MenuUIController menuUIController;
 
     // Use this for initialization
     void Awake () {
-        uIAnimation = GetComponent<UIAnimation>();
+        playerUIAnimation = GetComponent<PlayerUIAnimation>();
+        playerUIController = GetComponent<PlayerUIController>();
+        optionUIController = GetComponent<OptionUIController>();
+        menuUIController = GetComponent<MenuUIController>();
     }
 
     void Start()
@@ -21,17 +32,55 @@ public class UIManager : MonoBehaviour {
 		
 	}
 
-
-    public UIAnimation UIAnimation
+    public PlayerUIAnimation UIAnimation
     {
         get
         {
-            return uIAnimation;
+            return playerUIAnimation;
         }
 
         set
         {
-            uIAnimation = value;
+            playerUIAnimation = value;
+        }
+    }
+
+    public PlayerUIController PlayerUIController
+    {
+        get
+        {
+            return playerUIController;
+        }
+
+        set
+        {
+            playerUIController = value;
+        }
+    }
+
+    public OptionUIController OptionUIController
+    {
+        get
+        {
+            return optionUIController;
+        }
+
+        set
+        {
+            optionUIController = value;
+        }
+    }
+
+    public MenuUIController MenuUIController
+    {
+        get
+        {
+            return menuUIController;
+        }
+
+        set
+        {
+            menuUIController = value;
         }
     }
 }

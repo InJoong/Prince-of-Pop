@@ -4,24 +4,23 @@ using UnityEngine;
 
 public class CharacterAction : MonoBehaviour {
 
-    [SerializeField] private GameObject projectile;
+    [SerializeField] private GameObject weapon;
     [SerializeField] private GameObject projectileOrigin;
-
-    [SerializeField] private float bulletSpeed = 2000.0f;
+    [SerializeField] private GameObject container;
 
     public void IntantiateProjectile(bool rigth)
     {
-        GameObject bullet = Instantiate(projectile, projectileOrigin.transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-        Vector3 imageScale = this.transform.localScale;
-        bullet.transform.localScale = imageScale;
+        weapon.GetComponent<WeaponInteraction>().Interaction(rigth, projectileOrigin.transform.position);
+    }
 
-        if (!rigth)
+    public void ChangeWeapon(GameObject weapon)
+    {
+        if (this.weapon != null)
         {
-            bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(-bulletSpeed, 0));
+            container.GetComponent<WeaponContainer>().Weapon = this.weapon;
+            container.GetComponent<SpriteRenderer>().sprite = this.weapon.GetComponent<SpriteRenderer>().sprite;
+            Instantiate(container, transform.position, transform.rotation);
         }
-        else
-        {
-            bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(bulletSpeed, 0));
-        }
+        this.weapon = weapon;
     }
 }

@@ -11,7 +11,7 @@ public class CharacterState : MonoBehaviour {
     private float damageTime = 0;
 
     // Use this for initialization
-    void Awake () {
+    void Start () {
         playerManager = GetComponent<PlayerManager>();
         CurrentHealth = playerManager.CharModel.Health;
         MaxHealth = playerManager.CharModel.Health;

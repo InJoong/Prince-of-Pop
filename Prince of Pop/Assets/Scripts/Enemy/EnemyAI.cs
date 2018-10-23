@@ -63,7 +63,7 @@ public class EnemyAI : MonoBehaviour {
         if (other.gameObject.layer == 10)
         {
             Debug.Log("Hit");
-            health--;
+            health -= other.gameObject.GetComponent<Projectile>().Damage;
         }
 
         if (other.gameObject.layer == 8)

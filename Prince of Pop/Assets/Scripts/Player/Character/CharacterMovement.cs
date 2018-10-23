@@ -13,7 +13,7 @@ public class CharacterMovement : MonoBehaviour {
     [SerializeField] private LayerMask checkLayer;
     [SerializeField] Vector2 groundSize;
 
-    private void Start()
+    void Start()
     {
         rigBody2d = GetComponent<Rigidbody2D>();
         playerManager = GetComponent<PlayerManager>();

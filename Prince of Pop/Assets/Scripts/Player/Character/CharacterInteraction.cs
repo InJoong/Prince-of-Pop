@@ -5,15 +5,11 @@ using UnityEngine;
 public class CharacterInteraction : MonoBehaviour {
 
     private PlayerManager playerManager;
+    private GameObject tempWeaponContainer;
 
-    void Awake()
+    void Start()
     {
         playerManager = GetComponent<PlayerManager>();
-    }
-
-    public void Interaction()
-    {
-
     }
 
     public void Damaged(bool facingRigth)
@@ -22,6 +18,16 @@ public class CharacterInteraction : MonoBehaviour {
             this.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-500, 100));
         if (facingRigth)
             this.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(500, 100));
+    }
+
+    public void GrabWeapon()
+    {
+        if(tempWeaponContainer != null)
+        {
+            playerManager.CharAction.ChangeWeapon(tempWeaponContainer.GetComponent<WeaponContainer>().Weapon);
+            Destroy(tempWeaponContainer);
+            tempWeaponContainer = null;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -35,6 +41,22 @@ public class CharacterInteraction : MonoBehaviour {
                 Damaged(collision.gameObject.GetComponent<EnemyModel>().FacingRigth);
                 playerManager.CharModel.Damaged = true;
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 13)
+        {
+            tempWeaponContainer = collision.gameObject;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 13)
+        {
+            tempWeaponContainer = null;
         }
     }
 }
