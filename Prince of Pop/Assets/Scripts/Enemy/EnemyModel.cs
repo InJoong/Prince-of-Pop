@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyModel : MonoBehaviour {
 
-    [SerializeField] private float health = 10.0f;
+    [SerializeField] private float health = 100.0f;
     [SerializeField] private float attack = 10.0f;
     [SerializeField] private float defense = 10.0f;
     [SerializeField] private float speed = 10.0f;
@@ -74,25 +74,4 @@ public class EnemyModel : MonoBehaviour {
             facingRigth = value;
         }
     }
-    
-    void OnCollisionEnter2D(Collision2D other){
-        if(other.gameObject.name=="Character"){
-            health=health-1;
-        }
-        if(health<=0){
-            Destroy(gameObject);
-        }
-    }
-    
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        health=health-1;
-        if(health<=0){
-            Destroy(gameObject);
-        }
-    }
-    
-    
-    
-    
 }
