@@ -22,8 +22,10 @@ GameObject:
   - component: {fileID: 212869228290864394}
   - component: {fileID: 61026819010300086}
   - component: {fileID: 50105186906282390}
+  - component: {fileID: 114677357440230978}
+  - component: {fileID: 114347611719619694}
   - component: {fileID: 114676934114050362}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Weapon_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1562664308216246}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -37.53, y: 5.97, z: 0}
+  m_LocalPosition: {x: -43.07599, y: 5.1969485, z: 0}
   m_LocalScale: {x: 7, y: 7, z: 7}
   m_Children: []
   m_Father: {fileID: 0}
@@ -88,6 +90,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4, y: 0.4}
   m_EdgeRadius: 0
+--- !u!114 &114347611719619694
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1562664308216246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7edc59ee382f97c45b5a03db1359805d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  speed: 2000
+  range: 10
+  shootingCoolDown: 0.2
+  projectile: {fileID: 1698730277797182, guid: 0b707eb8ba154914590be1324336d043, type: 2}
 --- !u!114 &114676934114050362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -99,10 +117,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 814cddb5a424cfb49b40f7480c8e0f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
-  speed: 2000
-  range: 10
-  projectile: {fileID: 1698730277797182, guid: 0b707eb8ba154914590be1324336d043, type: 2}
+--- !u!114 &114677357440230978
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1562664308216246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1ea6269666a28f45b3afb45f37ec5c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212869228290864394
 SpriteRenderer:
   m_ObjectHideFlags: 1

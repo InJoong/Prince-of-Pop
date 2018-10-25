@@ -22,8 +22,10 @@ GameObject:
   - component: {fileID: 212636580117978572}
   - component: {fileID: 61852848519894512}
   - component: {fileID: 50661188585593346}
+  - component: {fileID: 114605523718747928}
+  - component: {fileID: 114450402250097266}
   - component: {fileID: 114801563353966748}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Weapon_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,8 +39,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1438664201815026}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -33.87, y: 5.97, z: 0}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalPosition: {x: -37.440346, y: 4.0389385, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -88,6 +90,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4, y: 0.4}
   m_EdgeRadius: 0
+--- !u!114 &114450402250097266
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1438664201815026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7edc59ee382f97c45b5a03db1359805d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  speed: 2000
+  range: 10
+  shootingCoolDown: 0.5
+  projectile: {fileID: 1605873968193368, guid: fac3d677a25544443be9bd8e24ad08a5, type: 2}
+--- !u!114 &114605523718747928
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1438664201815026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1ea6269666a28f45b3afb45f37ec5c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114801563353966748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -99,10 +128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eebefc83a32d0c2449c45859621ce246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
-  speed: 1000
-  range: 10
-  projectile: {fileID: 1605873968193368, guid: fac3d677a25544443be9bd8e24ad08a5, type: 2}
 --- !u!212 &212636580117978572
 SpriteRenderer:
   m_ObjectHideFlags: 1

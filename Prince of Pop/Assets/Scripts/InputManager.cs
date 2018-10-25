@@ -29,41 +29,36 @@ public class InputManager : MonoBehaviour {
     void Update()
     {
         //Horizontal Movement
-        ScriptManager.singleton.PlayerManager.CharMovement.Move(new Vector2(ScriptManager.singleton.PlayerManager.CharModel.MovementSpeed 
-                                                    * Input.GetAxisRaw("Horizontal"), 0));
+        if(!ScriptManager.singleton.PlayerManager.CharState.Damaged)
+            ScriptManager.singleton.PlayerManager.CharMovement.Move(new Vector2(ScriptManager.singleton.PlayerManager.CharModel.MovementSpeed 
+                                                                    * Input.GetAxisRaw("Horizontal"), GetComponent<Rigidbody2D>().velocity.y));
 
         //Jump
-        if (Input.GetKeyDown("x") && !ScriptManager.singleton.PlayerManager.CharModel.Damaged)
+        if (Input.GetKeyDown("x") && !ScriptManager.singleton.PlayerManager.CharState.Damaged)
             ScriptManager.singleton.PlayerManager.CharMovement.Jump();
 
         //Shoot
-        if (Input.GetKeyDown("c") && !ScriptManager.singleton.PlayerManager.CharModel.Damaged)
+        if (Input.GetKeyDown("c") && !ScriptManager.singleton.PlayerManager.CharState.Damaged)
         {
-            ScriptManager.singleton.PlayerManager.CharAction.IntantiateProjectile(ScriptManager.singleton.PlayerManager.CharModel.FacingRigth);
+            ScriptManager.singleton.PlayerManager.CharAction.Shoot();
         }
 
-        if (Input.GetKeyDown("z") && !ScriptManager.singleton.PlayerManager.CharModel.Damaged)
+        if (Input.GetKeyDown("z") && !ScriptManager.singleton.PlayerManager.CharState.Damaged)
         {
-            ScriptManager.singleton.PlayerManager.CharInteraction.GrabWeapon();
+            ScriptManager.singleton.PlayerManager.CharInteraction.InteractObject();
         }
         
         //Flip texture
-        if (Input.GetAxis("Horizontal") > 0 && !ScriptManager.singleton.PlayerManager.CharModel.FacingRigth && !ScriptManager.singleton.PlayerManager.CharModel.Damaged)
+        if (Input.GetAxis("Horizontal") > 0 && transform.localScale.x < 0 && !ScriptManager.singleton.PlayerManager.CharState.Damaged)
             FlipCharacter();
-        else if (Input.GetAxis("Horizontal") < 0 && ScriptManager.singleton.PlayerManager.CharModel.FacingRigth && !ScriptManager.singleton.PlayerManager.CharModel.Damaged)
+        else if (Input.GetAxis("Horizontal") < 0 && transform.localScale.x > 0 && !ScriptManager.singleton.PlayerManager.CharState.Damaged)
             FlipCharacter();
     }
 
     public void FlipCharacter()
     {
-        ScriptManager.singleton.PlayerManager.CharModel.FacingRigth = !ScriptManager.singleton.PlayerManager.CharModel.FacingRigth;
         Vector3 imageScale = this.transform.localScale;
         imageScale.x *= -1;
         this.gameObject.transform.localScale = imageScale;
-    }
-
-    private void OnGUI()
-    {
-        GUILayout.Label("Hp| "+ ScriptManager.singleton.PlayerManager.CharModel.Health+" |");
     }
 }

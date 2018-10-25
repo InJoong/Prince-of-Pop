@@ -17,7 +17,9 @@ public class MenuUIController : MonoBehaviour {
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        DontDestroyOnLoad(GameObject.Find("Game Master"));
+        DontDestroyOnLoad(GameObject.Find("Character"));
+        SceneManager.LoadScene(4);
     }
 
     public void ExitGame()

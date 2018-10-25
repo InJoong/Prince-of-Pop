@@ -19,5 +19,6 @@ public class CharacterAnimation : MonoBehaviour {
         characterAnimator.SetFloat("SpeedX", Mathf.Abs(Input.GetAxisRaw("Horizontal")));
         characterAnimator.SetFloat("SpeedY", this.gameObject.GetComponent<Rigidbody2D>().velocity.y);
         characterAnimator.SetBool("Grounded", playerManager.CharMovement.Grounded);
+        characterAnimator.SetBool("Damaged", playerManager.CharState.Damaged);
     }
 }

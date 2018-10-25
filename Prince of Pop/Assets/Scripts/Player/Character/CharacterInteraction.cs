@@ -5,28 +5,17 @@ using UnityEngine;
 public class CharacterInteraction : MonoBehaviour {
 
     private PlayerManager playerManager;
-    private GameObject tempWeaponContainer;
+    private GameObject objectoToInteract;
 
     void Start()
     {
         playerManager = GetComponent<PlayerManager>();
     }
 
-    public void Damaged(bool facingRigth)
+    public void InteractObject()
     {
-        if(!facingRigth)
-            this.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-500, 100));
-        if (facingRigth)
-            this.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(500, 100));
-    }
-
-    public void GrabWeapon()
-    {
-        if(tempWeaponContainer != null)
-        {
-            playerManager.CharAction.ChangeWeapon(tempWeaponContainer.GetComponent<WeaponContainer>().Weapon);
-            Destroy(tempWeaponContainer);
-            tempWeaponContainer = null;
+        if (objectoToInteract != null) {
+            objectoToInteract.GetComponent<Interactable>().Interact();
         }
     }
 
@@ -34,29 +23,25 @@ public class CharacterInteraction : MonoBehaviour {
     {
         if (collision.gameObject.layer == 9)
         {
-            if (!playerManager.CharModel.Damaged)
+            if (!playerManager.CharState.Damaged)
             {
                 Debug.Log("Enemy");
                 playerManager.CharState.DecreaseHealth(collision.gameObject.GetComponent<EnemyModel>().Attack);
-                Damaged(collision.gameObject.GetComponent<EnemyModel>().FacingRigth);
-                playerManager.CharModel.Damaged = true;
+                playerManager.CharState.KnockBack();
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 13)
+        if (collision.GetComponent<Interactable>() != null)
         {
-            tempWeaponContainer = collision.gameObject;
+            objectoToInteract = collision.gameObject;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 13)
-        {
-            tempWeaponContainer = null;
-        }
+        objectoToInteract = null;
     }
 }

@@ -8,7 +8,12 @@ public class CharacterState : MonoBehaviour {
 
     private float currentHealth;
     private float maxHealth;
-    private float damageTime = 0;
+    private bool damaged;
+    private bool undamagable;
+
+    [SerializeField] private float damageTime = 0.6f;
+
+    private float count = 0;
 
     // Use this for initialization
     void Start () {
@@ -19,14 +24,14 @@ public class CharacterState : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (playerManager.CharModel.Damaged)
+        if (Damaged)
         {
-            damageTime += Time.deltaTime;
+            count += Time.deltaTime;
 
-            if (damageTime >= 0.6f)
+            if (count >= damageTime)
             {
-                playerManager.CharModel.Damaged = false;
-                damageTime = 0;
+                Damaged = false;
+                count = 0;
                 Undamageable();
             }
         }
@@ -40,6 +45,13 @@ public class CharacterState : MonoBehaviour {
     public void DecreaseHealth(float value)
     {
         CurrentHealth -= value;
+    }
+
+    public void KnockBack()
+    {
+        Damaged = true;
+        float nockBack = transform.localScale.x * 500;
+        this.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-nockBack, 100));
     }
 
     public void Undamageable()
@@ -70,6 +82,32 @@ public class CharacterState : MonoBehaviour {
         set
         {
             maxHealth = value;
+        }
+    }
+
+    public bool Damaged
+    {
+        get
+        {
+            return damaged;
+        }
+
+        set
+        {
+            damaged = value;
+        }
+    }
+
+    public bool Undamagable
+    {
+        get
+        {
+            return undamagable;
+        }
+
+        set
+        {
+            undamagable = value;
         }
     }
 }

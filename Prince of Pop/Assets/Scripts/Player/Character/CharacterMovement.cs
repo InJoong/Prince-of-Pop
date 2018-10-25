@@ -26,7 +26,9 @@ public class CharacterMovement : MonoBehaviour {
 
     public void Move(Vector2 move)
     {
-        this.gameObject.transform.Translate(move.x, 0, 0);
+        //this.gameObject.transform.Translate(move.x, 0, 0);
+
+        this.GetComponent<Rigidbody2D>().velocity = move;
 
         /*
         Vector2 move = Vector2.zero;

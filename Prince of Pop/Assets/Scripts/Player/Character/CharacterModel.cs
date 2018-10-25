@@ -8,9 +8,7 @@ public class CharacterModel : MonoBehaviour
     [SerializeField] private float health = 10.0f;
     [SerializeField] private float movementSpeed = 10.0f;
     [SerializeField] private float jumpForce = 10.0f;
-    [SerializeField] private bool facingRigth = true;
-    [SerializeField] private bool invisible = false;
-    [SerializeField] private bool damaged = false;
+    [SerializeField] private GameObject projectileOrigin;
 
     public float MovementSpeed
     {
@@ -38,19 +36,6 @@ public class CharacterModel : MonoBehaviour
         }
     }
 
-    public bool FacingRigth
-    {
-        get
-        {
-            return facingRigth;
-        }
-
-        set
-        {
-            facingRigth = value;
-        }
-    }
-
     public float Health
     {
         get
@@ -64,29 +49,16 @@ public class CharacterModel : MonoBehaviour
         }
     }
 
-    public bool Invisible
+    public GameObject ProjectileOrigin
     {
         get
         {
-            return invisible;
+            return projectileOrigin;
         }
 
         set
         {
-            invisible = value;
-        }
-    }
-
-    public bool Damaged
-    {
-        get
-        {
-            return damaged;
-        }
-
-        set
-        {
-            damaged = value;
+            projectileOrigin = value;
         }
     }
 }

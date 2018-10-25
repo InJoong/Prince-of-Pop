@@ -5,22 +5,24 @@ using UnityEngine;
 public class CharacterAction : MonoBehaviour {
 
     [SerializeField] private GameObject weapon;
-    [SerializeField] private GameObject projectileOrigin;
-    [SerializeField] private GameObject container;
 
-    public void IntantiateProjectile(bool rigth)
+    public void Shoot()
     {
-        weapon.GetComponent<WeaponInteraction>().Interaction(rigth, projectileOrigin.transform.position);
+        if (this.Weapon != null) {
+            Weapon.GetComponent<WeaponInteractable>().Fire();
+        }
     }
 
-    public void ChangeWeapon(GameObject weapon)
+    public GameObject Weapon
     {
-        if (this.weapon != null)
+        get
         {
-            container.GetComponent<WeaponContainer>().Weapon = this.weapon;
-            container.GetComponent<SpriteRenderer>().sprite = this.weapon.GetComponent<SpriteRenderer>().sprite;
-            Instantiate(container, transform.position, transform.rotation);
+            return weapon;
         }
-        this.weapon = weapon;
+
+        set
+        {
+            weapon = value;
+        }
     }
 }
