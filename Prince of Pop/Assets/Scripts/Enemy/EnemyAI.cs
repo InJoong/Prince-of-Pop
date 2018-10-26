@@ -63,28 +63,13 @@ public class EnemyAI : MonoBehaviour {
         if (other.gameObject.layer == 10)
         {
             Debug.Log("Hit");
-            health--;
+            health -= other.gameObject.GetComponent<Projectile>().Damage;
         }
 
         if (other.gameObject.layer == 8)
         {
             foundPlayer = true;
             player = other.gameObject;
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == 8)
-        {
-            CharacterModel charModel = collision.gameObject.GetComponent<CharacterModel>();
-            if (!charModel.Damaged) {
-                Debug.Log("Enemy");
-
-                collision.gameObject.GetComponent<CharacterInteraction>().Damaged(eneModel.FacingRigth);
-                charModel.Health -= eneModel.Attack;
-                charModel.Damaged = true;
-            }
         }
     }
 
