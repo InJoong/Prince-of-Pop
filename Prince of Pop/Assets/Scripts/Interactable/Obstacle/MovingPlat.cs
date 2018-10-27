@@ -9,12 +9,10 @@ public class MovingPlat : MonoBehaviour {
     public Transform currentPoint;
     public Transform[] points;
     public int pointSelection;
- 
-     public int CurrentPoint = 0;
     
 	// Use this for initialization
 	void Start () {
-		currentPoint= points [pointSelection];
+		currentPoint = points [pointSelection];
 	}
 	
 	// Update is called once per frame

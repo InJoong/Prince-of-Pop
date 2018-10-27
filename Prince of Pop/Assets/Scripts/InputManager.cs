@@ -29,21 +29,26 @@ public class InputManager : MonoBehaviour {
     void Update()
     {
         //Horizontal Movement
-        if(!ScriptManager.singleton.PlayerManager.CharState.Damaged)
-            ScriptManager.singleton.PlayerManager.CharMovement.Move(new Vector2(ScriptManager.singleton.PlayerManager.CharModel.MovementSpeed 
+        if (ScriptManager.singleton.PlayerManager.CharState.Damaged
+            || ScriptManager.singleton.PlayerManager.CharState.CurrentHealth <= 0)
+        {
+            return;
+        }
+
+        ScriptManager.singleton.PlayerManager.CharMovement.Move(new Vector2(ScriptManager.singleton.PlayerManager.CharModel.MovementSpeed 
                                                                     * Input.GetAxisRaw("Horizontal"), GetComponent<Rigidbody2D>().velocity.y));
 
         //Jump
-        if (Input.GetKeyDown("x") && !ScriptManager.singleton.PlayerManager.CharState.Damaged)
+        if (Input.GetKeyDown("x"))
             ScriptManager.singleton.PlayerManager.CharMovement.Jump();
 
         //Shoot
-        if (Input.GetKeyDown("c") && !ScriptManager.singleton.PlayerManager.CharState.Damaged)
+        if (Input.GetKeyDown("c"))
         {
             ScriptManager.singleton.PlayerManager.CharAction.Shoot();
         }
 
-        if (Input.GetKeyDown("z") && !ScriptManager.singleton.PlayerManager.CharState.Damaged)
+        if (Input.GetKeyDown("z"))
         {
             ScriptManager.singleton.PlayerManager.CharInteraction.InteractObject();
         }

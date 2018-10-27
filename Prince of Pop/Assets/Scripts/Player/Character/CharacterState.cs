@@ -14,6 +14,7 @@ public class CharacterState : MonoBehaviour {
     [SerializeField] private float damageTime = 0.6f;
 
     private float count = 0;
+    private float deathTimer = 0;
 
     // Use this for initialization
     void Start () {
@@ -36,9 +37,17 @@ public class CharacterState : MonoBehaviour {
             }
         }
 
-        if (CurrentHealth < 0)
+        if (CurrentHealth <= 0)
         {
             CurrentHealth = 0;
+            if (playerManager.CharMovement.Grounded) {
+
+                deathTimer += Time.deltaTime;
+
+                if (deathTimer >= 1.5f) {
+                    ScriptManager.singleton.SceneController.Return();
+                }
+            }
         }
     }
 
@@ -50,7 +59,7 @@ public class CharacterState : MonoBehaviour {
     public void KnockBack()
     {
         Damaged = true;
-        float nockBack = transform.localScale.x * 500;
+        float nockBack = transform.localScale.x * 300;
         this.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-nockBack, 100));
     }
 

@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class CharacterAction : MonoBehaviour {
 
+    private PlayerManager playerManager;
+
+    void Start()
+    {
+        playerManager = GetComponent<PlayerManager>();
+    }
+
     [SerializeField] private GameObject weapon;
 
     public void Shoot()
     {
         if (this.Weapon != null) {
+            playerManager.CharAnimation.ShootingAnimation();
             Weapon.GetComponent<WeaponInteractable>().Fire();
         }
     }

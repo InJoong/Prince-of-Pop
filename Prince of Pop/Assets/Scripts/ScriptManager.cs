@@ -10,6 +10,7 @@ public class ScriptManager : MonoBehaviour {
     private PlayerManager playerManager;
     private InputManager inputManager;
     private UIManager uIManager;
+    private SceneController sceneController;
 
     // Use this for initialization
     void Awake()
@@ -54,6 +55,19 @@ public class ScriptManager : MonoBehaviour {
         set
         {
             uIManager = value;
+        }
+    }
+
+    public SceneController SceneController
+    {
+        get
+        {
+            return sceneController;
+        }
+
+        set
+        {
+            sceneController = value;
         }
     }
 }
