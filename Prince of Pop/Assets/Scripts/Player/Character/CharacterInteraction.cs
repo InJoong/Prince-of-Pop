@@ -19,23 +19,22 @@ public class CharacterInteraction : MonoBehaviour {
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 9)
+        if (collision.gameObject.layer == 9 || collision.gameObject.layer == 12)
         {
-            if (!playerManager.CharState.Damaged)
+            if (!playerManager.CharState.Damaged && !playerManager.CharState.Invinsible)
             {
-                Debug.Log("Enemy");
                 playerManager.CharState.DecreaseHealth(collision.gameObject.GetComponent<EnemyModel>().Attack);
-                playerManager.CharState.KnockBack();
             }
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.GetComponent<Interactable>() != null)
         {
+            transform.Find("Action Button").GetComponent<SpriteRenderer>().enabled = true;
             objectoToInteract = collision.gameObject;
         }
     }
@@ -43,5 +42,9 @@ public class CharacterInteraction : MonoBehaviour {
     private void OnTriggerExit2D(Collider2D collision)
     {
         objectoToInteract = null;
+        if (collision.GetComponent<Interactable>() != null)
+        {
+            transform.Find("Action Button").GetComponent<SpriteRenderer>().enabled = false;
+        }
     }
 }

@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 95770413441745790}
   - component: {fileID: 50811213185123554}
   - component: {fileID: 61369034327836040}
-  - component: {fileID: 58036888304611706}
   - component: {fileID: 114066161073871598}
   - component: {fileID: 114631963166067626}
   m_Layer: 9
@@ -41,7 +40,7 @@ Transform:
   m_GameObject: {fileID: 1391459845033718}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -161.378, y: 10.164, z: -0.28432578}
-  m_LocalScale: {x: 1.517, y: 1.338, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -65,22 +64,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!58 &58036888304611706
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1391459845033718}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 6.79
+  m_Constraints: 5
 --- !u!61 &61369034327836040
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -135,10 +119,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 233231973646eb449b35183a1233fee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 8
   attack: 1
   defense: 10
-  speed: 3
+  speed: 4
   facingRigth: 1
 --- !u!114 &114631963166067626
 MonoBehaviour:
@@ -151,8 +135,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b984c1a1e140ae42a9d4527dcb6c8c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 10
-  detectionCollider: {fileID: 58036888304611706}
+  followDistance: 20
+  detectionDistance: 7
+  detectionMask:
+    serializedVersion: 2
+    m_Bits: 256
   foundPlayer: 0
 --- !u!212 &212624456411995434
 SpriteRenderer:

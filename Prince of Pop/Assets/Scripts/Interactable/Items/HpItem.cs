@@ -9,24 +9,18 @@ public class HpItem : MonoBehaviour, Interactable {
     
     public void Interact()
     {
+        CharacterState charState = ScriptManager.singleton.PlayerManager.CharState;
 
-    }
+        if (charState.CurrentHealth != charState.MaxHealth)
+        {
+            charState.CurrentHealth += hpUp;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == 8) {
-            CharacterState charState = collision.gameObject.GetComponent<CharacterState>();
-
-            if (charState.CurrentHealth != charState.MaxHealth) {
-                charState.CurrentHealth += hpUp;
-
-                if (charState.CurrentHealth > charState.MaxHealth)
-                {
-                    charState.CurrentHealth -= (charState.CurrentHealth - charState.MaxHealth);
-                }
-
-                Destroy(this.gameObject);
+            if (charState.CurrentHealth > charState.MaxHealth)
+            {
+                charState.CurrentHealth -= (charState.CurrentHealth - charState.MaxHealth);
             }
+
+            Destroy(this.gameObject);
         }
     }
 }

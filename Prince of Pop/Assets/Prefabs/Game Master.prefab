@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4748143848830802}
   - component: {fileID: 114523754680327552}
+  - component: {fileID: 114185675604100630}
   m_Layer: 0
   m_Name: Game Master
   m_TagString: Untagged
@@ -40,6 +41,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114185675604100630
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1707275300749858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01d59e70a33f63d49af16eda5d0d089e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLife: 3
+  nextLevel: 1
+  startName: Start Point
 --- !u!114 &114523754680327552
 MonoBehaviour:
   m_ObjectHideFlags: 1

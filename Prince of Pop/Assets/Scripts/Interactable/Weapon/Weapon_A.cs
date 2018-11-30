@@ -27,7 +27,7 @@ public class Weapon_A : MonoBehaviour, Interactable, WeaponInteractable {
     {
         foreach (Transform child in GameObject.Find("WeaponSlot").transform)
         {
-            child.parent = null;
+            child.parent = null; 
             if (child.transform.localScale.x == -1)
             {
                 Vector3 imageScale = this.transform.localScale;
@@ -36,11 +36,13 @@ public class Weapon_A : MonoBehaviour, Interactable, WeaponInteractable {
             }
             child.gameObject.GetComponent<SpriteRenderer>().enabled = true;
             child.gameObject.GetComponent<Rigidbody2D>().simulated = true;
+            child.GetComponent<BoxCollider2D>().enabled = true;
             child.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
         }
 
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<Rigidbody2D>().simulated = false;
+        GetComponent<BoxCollider2D>().enabled = false;
         transform.parent = GameObject.Find("WeaponSlot").transform;
         transform.localPosition = Vector3.zero;
         ScriptManager.singleton.PlayerManager.CharAction.Weapon = this.gameObject;
@@ -67,6 +69,7 @@ public class Weapon_A : MonoBehaviour, Interactable, WeaponInteractable {
 
     public void Reload() { }
 
+    //Freeze the falling of the weapon, when hit the ground
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == 11)

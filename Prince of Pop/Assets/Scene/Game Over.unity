@@ -510,7 +510,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114571720598841286, guid: d12e2d69690d246459ed1ccf8ddcce63, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: d12e2d69690d246459ed1ccf8ddcce63, type: 2}
   m_IsPrefabAsset: 0
 --- !u!114 &497627149 stripped
@@ -664,7 +665,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 497627149}
-        m_MethodName: StartGame
+        m_MethodName: Continure
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

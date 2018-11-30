@@ -28,6 +28,31 @@ public class InputManager : MonoBehaviour {
     */
     void Update()
     {
+        if (Input.GetKeyDown("escape"))
+        {
+            if (Time.timeScale != 0)
+            {
+                ScriptManager.singleton.UIManager.PlayerUIController.MenuOptionVisible();
+                ScriptManager.singleton.SceneController.PauseGame();
+            }
+            else
+            {
+                ScriptManager.singleton.UIManager.PlayerUIController.MenuOptionInvisible();
+                ScriptManager.singleton.SceneController.ResumeGame();
+            }
+        }
+
+        if (Input.GetKeyDown("q") && Time.timeScale == 0)
+        {
+            ScriptManager.singleton.UIManager.MenuUIController.ReturnMainMenu();
+        }
+
+        // Cant access other input when paused
+        if (Time.timeScale == 0)
+        {
+            return;
+        }
+
         //Horizontal Movement
         if (ScriptManager.singleton.PlayerManager.CharState.Damaged
             || ScriptManager.singleton.PlayerManager.CharState.CurrentHealth <= 0)

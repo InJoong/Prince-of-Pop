@@ -32,16 +32,18 @@ public class Weapon_B : MonoBehaviour, Interactable, WeaponInteractable {
             if (child.transform.localScale.x == -1)
             {
                 Vector3 imageScale = this.transform.localScale;
-                imageScale.x *= -1;
+                imageScale.x = -1;
                 child.transform.localScale = imageScale;
             }
             child.gameObject.GetComponent<SpriteRenderer>().enabled = true;
             child.gameObject.GetComponent<Rigidbody2D>().simulated = true;
+            child.GetComponent<BoxCollider2D>().enabled = true;
             child.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
         }
 
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<Rigidbody2D>().simulated = false;
+        GetComponent<BoxCollider2D>().enabled = false;
         transform.parent = GameObject.Find("WeaponSlot").transform;
         transform.localPosition = Vector3.zero;
         ScriptManager.singleton.PlayerManager.CharAction.Weapon = this.gameObject;
@@ -70,14 +72,15 @@ public class Weapon_B : MonoBehaviour, Interactable, WeaponInteractable {
 
             float projectileSpeed = transform.parent.parent.localScale.x * weaponManager.WeaponModel.Speed;
 
-            bullet1.GetComponent<Rigidbody2D>().AddForce(new Vector2(projectileSpeed, 500));
+            bullet1.GetComponent<Rigidbody2D>().AddForce(new Vector2(projectileSpeed, 350));
             bullet2.GetComponent<Rigidbody2D>().AddForce(new Vector2(projectileSpeed, 0));
-            bullet3.GetComponent<Rigidbody2D>().AddForce(new Vector2(projectileSpeed, -500));
+            bullet3.GetComponent<Rigidbody2D>().AddForce(new Vector2(projectileSpeed, -350));
         }
     }
 
     public void Reload() { }
 
+    //Freeze the falling of the weapon, when hit the ground
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == 11)

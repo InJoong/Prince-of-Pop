@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerUIAnimation : MonoBehaviour {
 
     [SerializeField] private Animator healthBar;
+    [SerializeField] private Animator lifeBar;
 
     // Use this for initialization
     void Start () {
@@ -15,5 +16,6 @@ public class PlayerUIAnimation : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         healthBar.SetFloat("Health", ScriptManager.singleton.PlayerManager.CharState.CurrentHealth);
+        lifeBar.SetFloat("Life", ScriptManager.singleton.SceneController.PlayerLife);
     }
 }
